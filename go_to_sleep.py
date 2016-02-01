@@ -16,3 +16,5 @@ for i in range(minutes_until_mute):
     current_volume -= amount_to_subtract
     call(["vol", "out", str(current_volume)])
     sleep(60)
+
+call(["vol", "mute"])
