@@ -4,7 +4,7 @@ from subprocess import call, check_output
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--minutes_until_mute", type=int)
+parser.add_argument("-m", "--minutes_until_mute", help="time (in minutes) to set the volume to mute", type=int)
 a = parser.parse_args()
 minutes_until_mute = a.minutes_until_mute if a.minutes_until_mute else 30
 
