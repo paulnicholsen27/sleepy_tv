@@ -16,7 +16,7 @@ parser.add_argument(
     type=int)
 a = parser.parse_args()
 sleep(a.delay * 60)
-current_volume = float(check_output(
+starting_volume = float(check_output(
     ['osascript', '-e',
         'set ovol to output volume of (get volume settings)']))
 
@@ -24,8 +24,8 @@ for i in range(a.minutes_until_mute + 1):
     percent_of_volume = (-1.0 / (a.minutes_until_mute**2)) * (i**2) + 1
     # quadratic function with maximum at (0, 100%)
     # and crossing at (minutes_until_mute, 0)
-    new_volume = int(current_volume * percent_of_volume)
-    call(["vol", "out", str(new_volume)])
+    current_volume = int(starting_volume * percent_of_volume)
+    call(["vol", "out", str(current_volume)])
     call(["vol", "info"])
     sleep(60)
 
