@@ -24,8 +24,8 @@ for i in range(a.minutes_until_mute + 1):
     percent_of_volume = (-1.0 / (a.minutes_until_mute**2)) * (i**2) + 1
     # quadratic function with maximum at (0, 100%)
     # and crossing at (minutes_until_mute, 0)
-    current_volume = int(starting_volume * percent_of_volume)
-    call(["vol", "out", str(current_volume)])
+    updated_volume = int(starting_volume * percent_of_volume)
+    call(["vol", "out", str(updated_volume)])
     call(["vol", "info"])
     sleep(60)
 
